@@ -14,7 +14,7 @@ export default function ScreenA({ navigation }) {
       </Text>
       <Pressable onPress={onPressHandler} style={({ pressed }) => ({ backgroundColor: pressed ? '#ddd' : '#0f0' })}>
         <Text>
-          Screen B
+          Go to B
       </Text>
       </Pressable>
     </View>
