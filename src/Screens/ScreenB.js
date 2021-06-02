@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ScreenB({ navigation }) {
 
@@ -8,44 +8,60 @@ export default function ScreenB({ navigation }) {
     navigation.goBack()
   }
 
-  TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
+  TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
   const AppButton = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPressHandler} style={styles.appButtonContainer}>
-      <Text style={styles.appButtonText}>{title}</Text>
+    <TouchableOpacity onPress={onPressHandler}>
+      <LinearGradient
+        colors={["#EFD167", "#E9D489", "#B6B1B1"]}
+        style={styles.appButtonContainer}
+      >
+        <Text style={styles.appButtonText}>{title}</Text>
+      </LinearGradient>
     </TouchableOpacity>
   );
-
   return (
-    <View style={styles.body}>
-      <Image
-        style={styles.Logo}
-        source={require('../assets/logo.jpg')}
-      />
+    <View style={styles.body} >
+      <LinearGradient
+        colors={["#EFD167", "#B6B1B1"]}
+        style={styles.LinearGradient}
+      >
+        <Image
+          style={styles.Logo}
+          source={require('../assets/logo.jpg')}
+        />
 
-      <Text style={styles.h1}>
-        Inge Bra Bygg™
+        <Text style={styles.h1}>
+          Inge Bra Bygg™
       </Text>
-      <Text style={styles.test}>
-        Vi är så bra att vi bara mäter en gång
+        <Text >
+          Vi är så bra att vi bara mäter en gång
       </Text>
 
-      <View style={styles.container} >
-        <TextInput style={styles.input} placeholder="Email" />
-        <TextInput style={styles.input} placeholder="Password" />
-      </View>
-      <AppButton title="login!" size="sm" backgroundColor="#007bff" />
+        <View style={styles.container} >
+          <TextInput style={styles.input} placeholder="Email" />
+          <TextInput style={styles.input} placeholder="Password" />
+        </View>
+        <AppButton title="login!" size="sm" backgroundColor="#007bff" />
+        <Text>
+          Glömt Lösenord!
+      </Text>
+      </LinearGradient>
     </View>
-  )
+    )
 }
-
 const styles = StyleSheet.create({
   body: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 16,
-    backgroundColor: '#E5E5E5'
+    backgroundColor: 'orange',
+  },
+  LinearGradient: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 800,
+    width: 400,
   },
   input: {
     borderWidth: 0,
