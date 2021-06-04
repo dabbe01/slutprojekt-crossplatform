@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, } f
 export default function ScreenA({ navigation }) {
 
     const onPressHandler = () => {
-        navigation.navigate('Screen_A')
+        navigation.navigate('Screen_B')
     }
     const Meny = () => (
         setShowMeny(true)
