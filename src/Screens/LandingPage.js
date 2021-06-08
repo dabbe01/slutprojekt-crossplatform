@@ -32,8 +32,8 @@ export default function ScreenB({ navigation }) {
           source={require('../assets/sawBlade.png')}
         />
         <Text style={styles.h2} >
-          Svep för att logga in >>>
-      </Text>
+          Svep för att logga in {'>'}{'>'}{'>'}
+        </Text>
       </LinearGradient>
     </SafeAreaView>
   )
