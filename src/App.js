@@ -13,7 +13,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         header: () => null,
-        cardStyleInterpolators: CardStyleInterpolators.forHorizontalIOS
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
       }}>
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="Login" component={Login} />
