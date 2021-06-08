@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import Login from './Screens/Login'
 import CreateTask from './Screens/CreateTask'
 import UserProfile from './Screens/UserProfile.js'
@@ -11,7 +11,10 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ header: () => null }}>
+      <Stack.Navigator screenOptions={{
+        header: () => null,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+      }}>
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="CreateTask" component={CreateTask} />
