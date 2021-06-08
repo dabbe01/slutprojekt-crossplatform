@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, SafeAreaView } from 'react-native';
 
 export default function ScreenA({ navigation }) {
 
@@ -59,7 +59,7 @@ export default function ScreenA({ navigation }) {
     
     return (
 
-        <View style={styles.body}  onPress={Back}>
+        <SafeAreaView style={styles.body}  onPress={Back}>
             <View style={styles.headerContainer}>
                 <View style={styles.header}>
                     <Image
@@ -107,7 +107,7 @@ export default function ScreenA({ navigation }) {
                     <LogoutButton title="Logga ut" size="sm" backgroundColor="" />
                 </View>
             </View>}
-        </View>
+        </SafeAreaView>
     )
 }
 

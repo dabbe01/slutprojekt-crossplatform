@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ScreenA({ navigation }) {
@@ -10,7 +10,7 @@ export default function ScreenA({ navigation }) {
 
 
   return (
-    <View style={styles.body}>
+    <SafeAreaView style={styles.body}>
       <LinearGradient colors={["#EFD167", "#E9D489", "#B6B1B1"]}
         style={styles.headerContainer}>
              <TouchableOpacity onPress={onPressHandler}>
@@ -35,7 +35,7 @@ export default function ScreenA({ navigation }) {
       </View>
       <View style={styles.infoContainer}>  
       <View style={styles.info}>
-      <Text>Role: Admin</Text> 
+      <Text>Role:</Text>  
       
           </View> 
         <View style={styles.info}>
@@ -48,7 +48,7 @@ export default function ScreenA({ navigation }) {
       >
 
       </Image>
-    </View>
+    </SafeAreaView>
   )
 }
 
