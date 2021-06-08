@@ -117,12 +117,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
+    headerContainer:{
+        width: '100%',
+    },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: 'white',
-        width: 400,
-        height: 90,
+        alignItems: 'flex-end',
+        height: 120,
     },
     appButtonContainer: {
         flexDirection: 'row',
