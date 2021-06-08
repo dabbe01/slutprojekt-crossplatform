@@ -6,6 +6,10 @@ export default function ScreenA({ navigation }) {
     const onPressHandler = () => {
         navigation.navigate('Screen_B')
     }
+    const onPressProfileHandler = () => {
+        navigation.navigate('UserProfile')
+        setShowMeny(false)
+    }
     const Meny = () => (
         setShowMeny(true)
 
@@ -29,7 +33,7 @@ export default function ScreenA({ navigation }) {
 
 
     const ProfileButton = ({ title }) => (
-        <TouchableOpacity onPress={onPressHandler}
+        <TouchableOpacity onPress={onPressProfileHandler}
             style={styles.ProfileButtonContainer}>
             <Image
                 source={require('../assets/BuilderIcon.png')}
@@ -55,7 +59,7 @@ export default function ScreenA({ navigation }) {
     
     return (
 
-        <View style={styles.body}>
+        <View style={styles.body}  onPress={Back}>
             <View style={styles.headerContainer}>
                 <View style={styles.header}>
                     <Image

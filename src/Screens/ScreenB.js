@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
   LinearGradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 900,
-    width: 400,
+    height: '100%',
+    width: '100%',
   },
   input: {
     borderWidth: 0,
