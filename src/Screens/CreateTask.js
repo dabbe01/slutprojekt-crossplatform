@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, Saf
 export default function ScreenA({ navigation }) {
 
     const onPressHandler = () => {
-        navigation.navigate('Screen_B')
+        navigation.navigate('Login')
     }
     const onPressProfileHandler = () => {
         navigation.navigate('UserProfile')
@@ -56,10 +56,10 @@ export default function ScreenA({ navigation }) {
 
     )
 
-    
+
     return (
 
-        <SafeAreaView style={styles.body}  onPress={Back}>
+        <SafeAreaView style={styles.body} onPress={Back}>
             <View style={styles.headerContainer}>
                 <View style={styles.header}>
                     <Image
@@ -99,9 +99,9 @@ export default function ScreenA({ navigation }) {
             {showMeny && <View style={styles.meny}>
                 <View style={styles.triangle}>
                 </View>
-                    <TouchableOpacity style={styles.exitMeny} onPress={Back}>
-                        <Text style={styles.exitMenyText}>X</Text>
-                    </TouchableOpacity>
+                <TouchableOpacity style={styles.exitMeny} onPress={Back}>
+                    <Text style={styles.exitMenyText}>X</Text>
+                </TouchableOpacity>
                 <View>
                     <ProfileButton title="Min profil" size="sm" backgroundColor="" />
                     <LogoutButton title="Logga ut" size="sm" backgroundColor="" />
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-    headerContainer:{
+    headerContainer: {
         width: '100%',
     },
     header: {
@@ -229,8 +229,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 180,
     },
-    exitMenyText:{
-        fontSize:18
+    exitMenyText: {
+        fontSize: 18
     }
 
 
