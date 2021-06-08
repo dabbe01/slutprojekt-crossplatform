@@ -6,6 +6,7 @@ export default function ScreenB({ navigation }) {
 
   const onSwipeHandler = () => {
     navigation.navigate('Login')
+
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
