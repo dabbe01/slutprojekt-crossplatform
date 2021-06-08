@@ -4,8 +4,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ScreenB({ navigation }) {
 
-  const onPressHandler = () => {
-    navigation.navigate('CreateTask')
+  const onSwipeHandler = () => {
+    navigation.navigate('Login')
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
@@ -15,6 +15,9 @@ export default function ScreenB({ navigation }) {
       <LinearGradient
         colors={["#EFD167", "#B6B1B1"]}
         style={styles.LinearGradient}
+
+        onStartShouldSetResponder={() => { return true; }}
+        onResponderMove={() => { onSwipeHandler() }}
       >
         <Image
           style={styles.Logo}
