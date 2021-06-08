@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function ScreenB({ navigation }) {
 
   const onPressHandler = () => {
-    navigation.goBack()
+    navigation.navigate('CreateTask')
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
@@ -28,7 +28,7 @@ export default function ScreenB({ navigation }) {
       >
         <Image
           style={styles.Logo}
-          source={require('../assets/logo.jpg')}
+          source={require('../assets/logo.png')}
         />
 
         <Text style={styles.h1}>
@@ -55,13 +55,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'orange',
   },
   LinearGradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 800,
-    width: 400,
+    height: '100%',
+    width: '100%',
   },
   input: {
     borderWidth: 0,
@@ -74,7 +73,6 @@ const styles = StyleSheet.create({
   },
   appButtonContainer: {
     elevation: 8,
-    backgroundColor: "#D4C3A3",
     borderRadius: 50,
     paddingVertical: 10,
     paddingHorizontal: 105,
