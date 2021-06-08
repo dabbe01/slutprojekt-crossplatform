@@ -12,10 +12,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator  screenOptions={{ header: () => null }}>
+      <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="Screen_B" component={ScreenB} />
         <Stack.Screen name="CreateTask" component={CreateTask} />
        <Stack.Screen name="UserProfile" component={UserProfile}   />
-       <Stack.Screen name="LandingPage" component={LandingPage}   />
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
