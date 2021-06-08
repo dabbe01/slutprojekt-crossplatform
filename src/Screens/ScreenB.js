@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ScreenB({ navigation }) {
@@ -21,7 +21,7 @@ export default function ScreenB({ navigation }) {
     </TouchableOpacity>
   );
   return (
-    <View style={styles.body} >
+    <SafeAreaView style={styles.body} >
       <LinearGradient
         colors={["#EFD167", "#B6B1B1"]}
         style={styles.LinearGradient}
@@ -47,7 +47,7 @@ export default function ScreenB({ navigation }) {
           Glömt Lösenord!
       </Text>
       </LinearGradient>
-    </View>
+    </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
