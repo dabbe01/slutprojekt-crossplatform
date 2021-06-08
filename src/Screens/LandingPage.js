@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text,  View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ScreenB({ navigation }) {
@@ -27,16 +27,16 @@ export default function ScreenB({ navigation }) {
         <Text >
           Vi är så bra att vi bara mäter en gång
       </Text>
-      <Image
+        <Image
           style={styles.sawLogo}
           source={require('../assets/sawBlade.png')}
         />
-          <Text style={styles.h2} >
+        <Text style={styles.h2} >
           Svep för att logga in >>>
       </Text>
       </LinearGradient>
     </SafeAreaView>
-    )
+  )
 }
 const styles = StyleSheet.create({
   body: {
@@ -54,16 +54,16 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
   },
-  h2:{
-      fontSize: 20,
-      opacity: 0.5
+  h2: {
+    fontSize: 20,
+    opacity: 0.5
   },
   Logo: {
     width: 75,
     height: 75,
   },
-  sawLogo:{
-      margin: 30
+  sawLogo: {
+    margin: 30
   },
-  
+
 });
