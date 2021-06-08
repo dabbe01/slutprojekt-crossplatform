@@ -48,7 +48,7 @@ export default function ScreenB({ navigation }) {
       </Text>
       </LinearGradient>
     </SafeAreaView>
-    )
+  )
 }
 const styles = StyleSheet.create({
   body: {
