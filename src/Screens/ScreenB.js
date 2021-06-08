@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function ScreenB({ navigation }) {
 
   const onPressHandler = () => {
-    navigation.navigate('CreateTask')
+    navigation.navigate('LandingPage')
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
