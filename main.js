@@ -6,7 +6,7 @@ import axios from 'axios'
 registerRootComponent(App);
 
 const HOST = '10.0.2.2'
-const API = azios.create({
+const API = axios.create({
     baseUrl: `https://${HOST}:5000/api/v1`
 })
 
