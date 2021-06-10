@@ -2,25 +2,12 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import API from '../components/api';
+import LoginForm from '../components/Login/LoginForm'
 
 export default function ScreenB({ navigation }) {
 
-  const onPressHandler = async () => {
-    await API.login(email, password)
-    // try {
-    //   if (authorized) {
-    //     await navigation.navigate('CreateTask')
-    //   }
-    // } catch (err) {
-    //   throw err;
-    // }
-  }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
-
-  const [email, setEmail] = useState('email');
-  const [password, setPassword] = useState('password');
-
 
   const AppButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPressHandler}>
@@ -34,45 +21,7 @@ export default function ScreenB({ navigation }) {
   );
   return (
     <SafeAreaView style={styles.body} >
-      <LinearGradient
-        colors={["#EFD167", "#B6B1B1"]}
-        style={styles.LinearGradient}
-      >
-        <Image
-          style={styles.Logo}
-          source={require('../assets/logo.png')}
-        />
-
-        <Text style={styles.h1}>
-          Inge Bra Bygg™
-      </Text>
-        <Text >
-          Vi är så bra att vi bara mäter en gång
-      </Text>
-
-        <View style={styles.container} >
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            onChangeText={(value) => setEmail(value)}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            returnKeyType="next"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry
-            onChangeText={(value) => setPassword(value)}
-            returnKeyType="go"
-          />
-        </View>
-        <AppButton title="login!" size="sm" backgroundColor="#007bff" />
-        <Text>
-          Glömt Lösenord!
-        </Text>
-      </LinearGradient>
+      <LoginForm></LoginForm>
     </SafeAreaView>
   )
 }

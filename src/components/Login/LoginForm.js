@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, View, } from 'react-native';
 import BaseButton from '../BaseButton';
+import API from '../../components/api'
 
 
-const onPress = () => alert('Hej');
+// const onPress = () => alert('Hej');
+
 
 class LoginForm extends Component {
+
+  onPress = async () => {
+    try {
+      const authorized = await API.login(this.state.email, this.state.password)
+      if (authorized) {
+        await navigation.navigate('CreateTask')
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   constructor(props) {
     super(props);
@@ -13,7 +26,9 @@ class LoginForm extends Component {
       email: '',
       password: '',
     };
+    this.onPress = this.onPress.bind(this)
   }
+
 
   render() {
     return (
@@ -38,7 +53,7 @@ class LoginForm extends Component {
           returnKeyType="go"
         />
         <View style={styles.btnContainer}>
-          <BaseButton success block btntext='Login' onPress={onPress} />
+          <BaseButton success block btntext='Login' onPress={this.onPress} />
         </View>
 
       </View>
