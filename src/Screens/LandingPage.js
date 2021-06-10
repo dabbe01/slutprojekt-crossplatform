@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import LoginForm from '../components/Login/LoginForm';
 
 export default function ScreenB({ navigation }) {
 
@@ -13,6 +14,7 @@ export default function ScreenB({ navigation }) {
 
   return (
     <SafeAreaView style={styles.body} >
+
       <LinearGradient
         colors={["#EFD167", "#B6B1B1"]}
         style={styles.LinearGradient}
@@ -25,7 +27,7 @@ export default function ScreenB({ navigation }) {
           source={require('../assets/logo.png')}
         />
 
-        <Text style={styles.h1}>
+        <Text style={styles.titleText}>
           Inge Bra Bygg™
       </Text>
         <Text >

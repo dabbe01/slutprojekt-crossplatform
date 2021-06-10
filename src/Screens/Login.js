@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import API from '../components/api';
@@ -17,6 +17,10 @@ export default function ScreenB({ navigation }) {
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
+
+  const [email, setEmail] = useState('email');
+  const [password, setPassword] = useState('password');
+
 
   const AppButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPressHandler}>
@@ -47,13 +51,27 @@ export default function ScreenB({ navigation }) {
       </Text>
 
         <View style={styles.container} >
-          <TextInput style={styles.input} placeholder="Email" />
-          <TextInput style={styles.input} placeholder="Password" />
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            onChangeText={(value) => setEmail(value)}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+            returnKeyType="next"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            onChangeText={(value) => setPassword(value)}
+            returnKeyType="go"
+          />
         </View>
         <AppButton title="login!" size="sm" backgroundColor="#007bff" />
         <Text>
           Glömt Lösenord!
-      </Text>
+        </Text>
       </LinearGradient>
     </SafeAreaView>
   )
