@@ -1,11 +1,19 @@
 import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import API from '../components/api';
 
 export default function ScreenB({ navigation }) {
 
-  const onPressHandler = () => {
-    navigation.navigate('CreateTask')
+  const onPressHandler = async () => {
+    await API.login(email, password)
+    // try {
+    //   if (authorized) {
+    //     await navigation.navigate('CreateTask')
+    //   }
+    // } catch (err) {
+    //   throw err;
+    // }
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
