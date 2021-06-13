@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Header from '../components/Header'
 
 export default function ScreenB({ navigation }) {
 
@@ -13,6 +14,9 @@ export default function ScreenB({ navigation }) {
 
   return (
     <SafeAreaView style={styles.body} >
+  <Header>
+
+  </Header>
       <LinearGradient
         colors={["#EFD167", "#B6B1B1"]}
         style={styles.LinearGradient}
@@ -20,12 +24,13 @@ export default function ScreenB({ navigation }) {
         onStartShouldSetResponder={() => { return true; }}
         onResponderMove={() => { onSwipeHandler() }}
       >
+        
         <Image
           style={styles.Logo}
           source={require('../assets/logo.png')}
         />
 
-        <Text style={styles.h1}>
+        <Text style={styles.titleText}>
           Inge Bra Bygg™
       </Text>
         <Text >
@@ -45,8 +50,6 @@ export default function ScreenB({ navigation }) {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   LinearGradient: {
     alignItems: 'center',

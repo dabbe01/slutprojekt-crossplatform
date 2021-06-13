@@ -6,7 +6,6 @@ import Task from './Screens/Task'
 import UserProfile from './Screens/UserProfile.js'
 import LandingPage from './Screens/LandingPage.js'
 import CreateTask from './Screens/CreateTask.js'
-
 const Stack = createStackNavigator()
 
 export default function App() {

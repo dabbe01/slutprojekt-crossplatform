@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import API from '../components/api';
+import LoginForm from '../components/Login/LoginForm'
 
 export default function ScreenB({ navigation }) {
 
@@ -22,31 +24,7 @@ export default function ScreenB({ navigation }) {
   );
   return (
     <SafeAreaView style={styles.body} >
-      <LinearGradient
-        colors={["#EFD167", "#B6B1B1"]}
-        style={styles.LinearGradient}
-      >
-        <Image
-          style={styles.Logo}
-          source={require('../assets/logo.png')}
-        />
-
-        <Text style={styles.h1}>
-          Inge Bra Bygg™
-      </Text>
-        <Text >
-          Vi är så bra att vi bara mäter en gång
-      </Text>
-
-        <View style={styles.container} >
-          <TextInput style={styles.input} placeholder="Email" />
-          <TextInput style={styles.input} placeholder="Password" />
-        </View>
-        <AppButton title="login!" size="sm" backgroundColor="#007bff" />
-        <Text>
-          Glömt Lösenord!
-      </Text>
-      </LinearGradient>
+      <LoginForm></LoginForm>
     </SafeAreaView>
   )
 }
