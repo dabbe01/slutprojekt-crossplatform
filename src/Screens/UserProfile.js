@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function ScreenA({ navigation }) {
 
   const onPressHandler = () => {
-    navigation.navigate('CreateTask')
+    navigation.navigate('Task')
   }
 
 
