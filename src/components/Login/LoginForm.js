@@ -3,17 +3,16 @@ import { StyleSheet, TextInput, View, } from 'react-native';
 import BaseButton from '../BaseButton';
 import API from '../../components/api'
 
-
-// const onPress = () => alert('Hej');
-
+function nav({ navigation }) {
+  navigation.navigate('CreateTask')
+}
 
 class LoginForm extends Component {
-
   onPress = async () => {
     try {
       const authorized = await API.login(this.state.email, this.state.password)
       if (authorized) {
-        await navigation.navigate('CreateTask')
+        this.props.navigation.navigate('CreateTask')
       }
     } catch (err) {
       console.log(err)
@@ -23,8 +22,8 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'admin@localhost.se',
+      password: 'password',
     };
     this.onPress = this.onPress.bind(this)
   }

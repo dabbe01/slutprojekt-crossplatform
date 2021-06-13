@@ -24,7 +24,7 @@ export default function ScreenB({ navigation }) {
   );
   return (
     <SafeAreaView style={styles.body} >
-      <LoginForm></LoginForm>
+      <LoginForm navigation={navigation}></LoginForm>
     </SafeAreaView>
   )
 }
