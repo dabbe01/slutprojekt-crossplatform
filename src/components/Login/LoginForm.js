@@ -3,10 +3,6 @@ import { StyleSheet, TextInput, View, } from 'react-native';
 import BaseButton from '../BaseButton';
 import API from '../../components/api'
 
-function nav({ navigation }) {
-  navigation.navigate('CreateTask')
-}
-
 class LoginForm extends Component {
   onPress = async () => {
     try {
