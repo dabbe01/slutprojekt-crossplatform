@@ -12,7 +12,7 @@ class LoginForm extends Component {
     try {
       const authorized = await API.login(this.state.email, this.state.password)
       if (authorized) {
-        this.props.navigation.navigate('CreateTask')
+        this.props.navigation.navigate('Task')
       }
     } catch (err) {
       console.log(err)
