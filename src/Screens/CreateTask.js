@@ -1,12 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, SafeAreaView,Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, SafeAreaView, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ScreenB({ navigation }) {
 
   const done = () => {
     navigation.navigate('Task')
-
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
@@ -21,21 +20,21 @@ export default function ScreenB({ navigation }) {
         <Text style={styles.textTask}>Skriv din task här!</Text>
 
 
-        <TextInput style={styles.input} multiline placeholder=""/>
+        <TextInput style={styles.input} multiline placeholder="" />
 
 
         <TouchableOpacity onPress={done}
-            style={styles.doneContainer}>
-            <Image
-                source={require('../assets/addTask.png')}
-                style={styles.doneLogo}
-            />
-            <Text style={styles.doneText}>Klar</Text>
-            </TouchableOpacity>
-            <Image
-                source={require('../assets/houseLogo.png')}
-                style={styles.logo}
-            />
+          style={styles.doneContainer}>
+          <Image
+            source={require('../assets/addTask.png')}
+            style={styles.doneLogo}
+          />
+          <Text style={styles.doneText}>Klar</Text>
+        </TouchableOpacity>
+        <Image
+          source={require('../assets/houseLogo.png')}
+          style={styles.logo}
+        />
       </View>
     </SafeAreaView>
   )
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
 
   },
-  header:{
+  header: {
     width: '100%',
     height: 160,
     backgroundColor: '#ECD586',
@@ -55,20 +54,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  textHeader:{
+  textHeader: {
     fontSize: 30,
     fontWeight: 'bold'
   },
-  taskContainer:{
+  taskContainer: {
     flex: 1,
-   justifyContent: 'center' ,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  textTask:{
+  textTask: {
     margin: 20,
     fontSize: 20
   },
-  input:{
+  input: {
     textAlignVertical: 'top',
     width: 340,
     height: 70,
@@ -76,8 +75,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10
   },
-  doneContainer:{
-    justifyContent: 'space-around' ,
+  doneContainer: {
+    justifyContent: 'space-around',
     alignItems: 'center',
     margin: 20,
     flexDirection: 'row',
@@ -87,15 +86,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: 20
   },
-  doneLogo:{
+  doneLogo: {
     width: 20,
     height: 20,
   },
-  doneText:{
+  doneText: {
     fontSize: 20,
     fontWeight: '700'
   },
-  logo:{
+  logo: {
     position: 'absolute',
     top: 530
   }

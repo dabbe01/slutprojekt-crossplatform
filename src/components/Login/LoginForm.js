@@ -1,18 +1,21 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, TextInput, View, } from 'react-native';
+import { StyleSheet, TextInput, View, Text } from 'react-native';
 import BaseButton from '../BaseButton';
-import { login } from '../../components/api'
 import { AuthContext } from '../../store/AuthContext';
 
 const LoginForm = (props) => {
 
-  const { user, changeEmail, changePassword, changeToken } = useContext(AuthContext)
+  const { user, changeEmail, changePassword, login } = useContext(AuthContext)
+
+  let InvalidCredentialsError = false
 
   const loginHandler = async (user) => {
-    const authorized = await login(user.email, user.password)
-    if (authorized) {
-      changeToken(authorized.token)
+    try {
+      await login(user.email, user.password)
       props.navigation.navigate('Task')
+    } catch (err) {
+      InvalidCredentialsError = true
+      console.log(err)
     }
   }
 
@@ -41,7 +44,7 @@ const LoginForm = (props) => {
         value={user.password}
         returnKeyType="go"
       />
-
+      {InvalidCredentialsError && <Text>Invalid credentials</Text>}
       <View style={styles.btnContainer}>
         <BaseButton success block btntext='Login' onPress={() => loginHandler(user)} />
       </View>

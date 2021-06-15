@@ -8,10 +8,10 @@ module.exports = {
     login: async (email, password) => {
         try {
             const response = await API.post('/authenticate', { email: email, password: password })
-            if (response.status == 200) return response.data
+            return response.data
             // Add error handling
         } catch (err) {
-            console.log(err)
+            throw new Error('Invalid credentials')
         }
     },
 
