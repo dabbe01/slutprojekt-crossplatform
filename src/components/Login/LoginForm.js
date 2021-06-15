@@ -6,15 +6,16 @@ import { AuthContext } from '../../store/AuthContext';
 const LoginForm = (props) => {
 
   const { user, changeEmail, changePassword, login } = useContext(AuthContext)
+  const [invalidCredentials, SetinvalidCredentials] = useState(false);
 
-  let InvalidCredentialsError = false
 
   const loginHandler = async (user) => {
     try {
       await login(user.email, user.password)
       props.navigation.navigate('Task')
+      SetinvalidCredentials(false)
     } catch (err) {
-      InvalidCredentialsError = true
+      SetinvalidCredentials(true)
       console.log(err)
     }
   }
@@ -44,12 +45,12 @@ const LoginForm = (props) => {
         value={user.password}
         returnKeyType="go"
       />
-      {InvalidCredentialsError && <Text>Invalid credentials</Text>}
+      {invalidCredentials && <Text >Invalid Credentials</Text>}
       <View style={styles.btnContainer}>
         <BaseButton success block btntext='Login' onPress={() => loginHandler(user)} />
       </View>
 
-    </View>
+    </View >
   )
 }
 
