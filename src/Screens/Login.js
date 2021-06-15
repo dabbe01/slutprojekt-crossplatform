@@ -12,16 +12,6 @@ export default function ScreenB({ navigation }) {
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
-  const AppButton = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPressHandler}>
-      <LinearGradient
-        colors={["#EFD167", "#E9D489", "#B6B1B1"]}
-        style={styles.appButtonContainer}
-      >
-        <Text style={styles.appButtonText}>{title}</Text>
-      </LinearGradient>
-    </TouchableOpacity>
-  );
   return (
     <SafeAreaView style={styles.body} >
       <LoginForm navigation={navigation}></LoginForm>

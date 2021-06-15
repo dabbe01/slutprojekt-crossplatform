@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Header from '../components/Header'
 
 export default function ScreenB({ navigation }) {
 
@@ -14,9 +13,6 @@ export default function ScreenB({ navigation }) {
 
   return (
     <SafeAreaView style={styles.body} >
-  <Header>
-
-  </Header>
       <LinearGradient
         colors={["#EFD167", "#B6B1B1"]}
         style={styles.LinearGradient}
@@ -24,7 +20,6 @@ export default function ScreenB({ navigation }) {
         onStartShouldSetResponder={() => { return true; }}
         onResponderMove={() => { onSwipeHandler() }}
       >
-        
         <Image
           style={styles.Logo}
           source={require('../assets/logo.png')}
@@ -32,10 +27,10 @@ export default function ScreenB({ navigation }) {
 
         <Text style={styles.titleText}>
           Inge Bra Bygg™
-      </Text>
+        </Text>
         <Text >
           Vi är så bra att vi bara mäter en gång
-      </Text>
+        </Text>
         <Image
           style={styles.sawLogo}
           source={require('../assets/sawBlade.png')}

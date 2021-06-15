@@ -1,59 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, TextInput, View, } from 'react-native';
 import BaseButton from '../BaseButton';
-import API from '../../components/api'
+import { login } from '../../components/api'
+import { AuthContext } from '../../store/AuthContext';
 
-class LoginForm extends Component {
-  onPress = async () => {
-    try {
-      const authorized = await API.login(this.state.email, this.state.password)
-      if (authorized) {
-        this.props.navigation.navigate('Task')
-      }
-    } catch (err) {
-      console.log(err)
+const LoginForm = (props) => {
+
+  const { user, changeEmail, changePassword, changeToken } = useContext(AuthContext)
+
+  const loginHandler = async (user) => {
+    const authorized = await login(user.email, user.password)
+    if (authorized) {
+      changeToken(authorized.token)
+      props.navigation.navigate('Task')
     }
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: 'admin@localhost.se',
-      password: 'password',
-    };
-    this.onPress = this.onPress.bind(this)
-  }
+  return (
+    <View style={styles.container} >
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        name="email"
+        onChangeText={changeEmail}
+        value={user.email}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+        returnKeyType="next"
+      />
 
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        name="email"
+        secureTextEntry
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={changePassword}
+        value={user.password}
+        returnKeyType="go"
+      />
 
-  render() {
-    return (
-
-      <View style={styles.container} >
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          onChangeText={(email) => this.setState({ email })}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
-          returnKeyType="next"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          autoCapitalize="none"
-          autoCorrect={false}
-          onChangeText={(password) => this.setState({ password })}
-          returnKeyType="go"
-        />
-        <View style={styles.btnContainer}>
-          <BaseButton success block btntext='Login' onPress={this.onPress} />
-        </View>
-
+      <View style={styles.btnContainer}>
+        <BaseButton success block btntext='Login' onPress={() => loginHandler(user)} />
       </View>
-    )
-  }
+
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
