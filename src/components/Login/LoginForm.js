@@ -12,7 +12,7 @@ const LoginForm = (props) => {
     const authorized = await login(user.email, user.password)
     if (authorized) {
       changeToken(authorized.token)
-      props.navigation.navigate('CreateTask')
+      props.navigation.navigate('Task')
     }
   }
 

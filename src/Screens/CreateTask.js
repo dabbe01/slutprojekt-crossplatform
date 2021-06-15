@@ -1,237 +1,103 @@
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, SafeAreaView } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, SafeAreaView,Image } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export default function ScreenA({ navigation }) {
+export default function ScreenB({ navigation }) {
 
-    const onPressHandler = () => {
-        navigation.navigate('Login')
-    }
-    const onPressProfileHandler = () => {
-        navigation.navigate('UserProfile')
-        setShowMeny(false)
-    }
-    const Meny = () => (
-        setShowMeny(true)
+  const done = () => {
+    navigation.navigate('Task')
 
-    )
-    const Back = () => (
-        setShowMeny(false)
+  }
 
-    )
-    let [showMeny, setShowMeny] = useState(false)
+  TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
+
+  return (
+    <SafeAreaView style={styles.body} >
+      <View style={styles.header}>
+        <Text style={styles.textHeader}>Skapa din task</Text>
+      </View>
+
+      <View style={styles.taskContainer}>
+        <Text style={styles.textTask}>Skriv din task här!</Text>
 
 
-    const AppButton = ({ title }) => (
-        <TouchableOpacity onPress={onPressHandler}
-            style={styles.appButtonContainer}>
+        <TextInput style={styles.input} multiline placeholder=""/>
+
+
+        <TouchableOpacity onPress={done}
+            style={styles.doneContainer}>
             <Image
                 source={require('../assets/addTask.png')}
+                style={styles.doneLogo}
             />
-            <Text style={styles.appButtonText}>{title}</Text>
-        </TouchableOpacity>
-    );
-
-
-    const ProfileButton = ({ title }) => (
-        <TouchableOpacity onPress={onPressProfileHandler}
-            style={styles.ProfileButtonContainer}>
+            <Text style={styles.doneText}>Klar</Text>
+            </TouchableOpacity>
             <Image
-                source={require('../assets/BuilderIcon.png')}
-                style={styles.menybuttonLogo}
+                source={require('../assets/houseLogo.png')}
+                style={styles.logo}
             />
-            <Text style={styles.menybuttonText}>{title}</Text>
-        </TouchableOpacity>
-
-    )
-
-    const LogoutButton = ({ title }) => (
-        <TouchableOpacity onPress={onPressHandler}
-            style={styles.LogoutButtonContainer}>
-            <Image
-                source={require('../assets/logout.png')}
-                style={styles.menybuttonLogo}
-            />
-            <Text style={styles.menybuttonText}>{title}</Text>
-        </TouchableOpacity>
-
-    )
-
-
-    return (
-
-        <SafeAreaView style={styles.body} onPress={Back}>
-            <View style={styles.headerContainer}>
-                <View style={styles.header}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../assets/logo.png')}
-                    />
-                    <TouchableOpacity onPress={Meny}>
-                        <Image
-                            style={styles.icon}
-                            source={require('../assets/BuilderIcon.png')}
-                        />
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <View>
-
-                <AppButton title="Skapa ett ärende" size="sm" backgroundColor="" />
-            </View>
-
-            <Text style={styles.user}>
-                Dabstra
-            </Text>
-            <View style={styles.textContainer}>
-                <Text style={styles.text}>
-                    Philip ska bjuda Dabstra på öl 🍺
-            </Text>
-            </View>
-            <View style={styles.textContainer}>
-
-            </View>
-            <View style={styles.textContainer}>
-
-            </View>
-            <View style={styles.textContainer}>
-
-            </View>
-            {showMeny && <View style={styles.meny}>
-                <View style={styles.triangle}>
-                </View>
-                <TouchableOpacity style={styles.exitMeny} onPress={Back}>
-                    <Text style={styles.exitMenyText}>X</Text>
-                </TouchableOpacity>
-                <View>
-                    <ProfileButton title="Min profil" size="sm" backgroundColor="" />
-                    <LogoutButton title="Logga ut" size="sm" backgroundColor="" />
-                </View>
-            </View>}
-        </SafeAreaView>
-    )
+      </View>
+    </SafeAreaView>
+  )
 }
-
-
 const styles = StyleSheet.create({
-    body: {
-        flex: 1,
-        alignItems: 'center',
-    },
-    headerContainer: {
-        width: '100%',
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: 'white',
-        alignItems: 'flex-end',
-        height: 120,
-    },
-    appButtonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: "#FDDF75",
-        width: 280,
-        height: 50,
-        borderRadius: 50,
-        margin: 30,
-        padding: 20,
-    },
-    appButtonText: {
-        fontSize: 24,
-        color: "#000000",
-    },
-    textContainer: {
-        width: 340,
-        height: 70,
-        backgroundColor: "#FFF",
-        margin: 15,
-        borderRadius: 20
-    },
-    logo: {
-        margin: 24
-    },
-    icon: {
-        margin: 34
-    },
-    text: {
-        padding: 8
-    },
-    user: {
-        alignSelf: 'flex-start',
-        marginLeft: 30
+  body: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start'
 
-    },
-    meny: {
-        position: 'absolute',
-        top: 84,
-        left: 180,
-        width: 200,
-        height: 120,
-        backgroundColor: '#D7D7D7',
-        borderRadius: 10,
-
-
-    },
-    ProfileButtonContainer: {
-        position: 'relative',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: "#FDDF75",
-        top: 20,
-        borderRadius: 50,
-        height: 30,
-        paddingLeft: 25,
-        paddingRight: 25,
-        marginLeft: 20,
-        marginRight: 20,
-    },
-    LogoutButtonContainer: {
-        position: 'relative',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: "#FDDF75",
-        top: 40,
-        borderRadius: 50,
-        height: 30,
-        paddingLeft: 25,
-        paddingRight: 25,
-        marginLeft: 20,
-        marginRight: 20,
-    },
-    menybuttonText: {
-        fontSize: 15,
-        color: "#000000",
-    },
-    menybuttonLogo: {
-        width: 15,
-        height: 20,
-    },
-    triangle: {
-        position: 'absolute',
-        top: -18,
-        left: 160,
-        width: 20,
-        height: 20,
-        backgroundColor: "transparent",
-        borderLeftWidth: 10,
-        borderRightWidth: 10,
-        borderBottomWidth: 20,
-        borderLeftColor: "transparent",
-        borderRightColor: "transparent",
-        borderBottomColor: "#D7D7D7",
-
-    },
-    exitMeny: {
-        position: 'absolute',
-        left: 180,
-    },
-    exitMenyText: {
-        fontSize: 18
-    }
-
+  },
+  header:{
+    width: '100%',
+    height: 160,
+    backgroundColor: '#ECD586',
+    borderBottomLeftRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textHeader:{
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  taskContainer:{
+    flex: 1,
+   justifyContent: 'center' ,
+    alignItems: 'center',
+  },
+  textTask:{
+    margin: 20,
+    fontSize: 20
+  },
+  input:{
+    textAlignVertical: 'top',
+    width: 340,
+    height: 70,
+    backgroundColor: "#FFF",
+    borderRadius: 20,
+    padding: 10
+  },
+  doneContainer:{
+    justifyContent: 'space-around' ,
+    alignItems: 'center',
+    margin: 20,
+    flexDirection: 'row',
+    backgroundColor: "#FDDF75",
+    width: 120,
+    height: 50,
+    borderRadius: 50,
+    padding: 20
+  },
+  doneLogo:{
+    width: 20,
+    height: 20,
+  },
+  doneText:{
+    fontSize: 20,
+    fontWeight: '700'
+  },
+  logo:{
+    position: 'absolute',
+    top: 530
+  }
 
 });

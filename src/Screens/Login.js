@@ -6,6 +6,9 @@ import LoginForm from '../components/Login/LoginForm'
 
 export default function ScreenB({ navigation }) {
 
+  const onPressHandler = () => {
+    navigation.navigate('Task')
+  }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 

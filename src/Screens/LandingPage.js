@@ -20,7 +20,6 @@ export default function ScreenB({ navigation }) {
         onStartShouldSetResponder={() => { return true; }}
         onResponderMove={() => { onSwipeHandler() }}
       >
-
         <Image
           style={styles.Logo}
           source={require('../assets/logo.png')}
