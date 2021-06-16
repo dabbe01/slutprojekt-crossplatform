@@ -5,14 +5,19 @@ export const AuthContext = createContext()
 
 export const AuthProvider = props => {
   const [user, setUser] = useState({
+    role: '',
+    id: '',
+    firstName: '',
+    lastName: '',
     email: 'admin@localhost.se',
     password: 'password',
     token: '',
   })
 
-  const login = async (username, password) => {
-    const { email, token } = await API.login(username, password)
-    setUser({ email, token })
+  const login = async (username, pw) => {
+    const { email, token } = await API.login(username, pw)
+    const { role, _id, firstName, lastName, password } = await API.getUser(token)
+    setUser({ email, token, role, _id, firstName, lastName, password })
     return true
   }
 

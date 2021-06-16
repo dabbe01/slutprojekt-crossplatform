@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, SafeAreaView } from 'react-native';
 
 export default function ScreenA({ navigation }) {
@@ -10,16 +10,14 @@ export default function ScreenA({ navigation }) {
         navigation.navigate('UserProfile')
         setShowMeny(false)
     }
-    const logout = () =>{
+    const logout = () => {
         navigation.navigate('Login')
     }
     const Meny = () => (
         setShowMeny(true)
-
     )
     const Back = () => (
         setShowMeny(false)
-
     )
     let [showMeny, setShowMeny] = useState(false)
 
@@ -78,7 +76,6 @@ export default function ScreenA({ navigation }) {
                 </View>
             </View>
             <View>
-
                 <AppButton title="Skapa ett ärende" size="sm" backgroundColor="" />
             </View>
 
@@ -88,7 +85,7 @@ export default function ScreenA({ navigation }) {
             <View style={styles.textContainer}>
                 <Text style={styles.text}>
                     Philip ska bjuda Dabstra på öl 🍺
-            </Text>
+                </Text>
             </View>
             <View style={styles.textContainer}>
 
@@ -119,7 +116,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         alignItems: 'center',
-        
+
     },
     headerContainer: {
         width: '100%',

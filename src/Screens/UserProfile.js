@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { AuthContext } from '../store/AuthContext';
 
 export default function ScreenA({ navigation }) {
 
@@ -8,19 +9,20 @@ export default function ScreenA({ navigation }) {
     navigation.navigate('Task')
   }
 
+  const { user } = useContext(AuthContext)
 
   return (
     <SafeAreaView style={styles.body}>
       <LinearGradient colors={["#EFD167", "#E9D489", "#B6B1B1"]}
         style={styles.headerContainer}>
-             <TouchableOpacity onPress={onPressHandler}>
-                        <Image
-                            style={styles.arrow}
-                            source={require('../assets/Arrow.png')}
-                        />
-         </TouchableOpacity>
+        <TouchableOpacity onPress={onPressHandler}>
+          <Image
+            style={styles.arrow}
+            source={require('../assets/Arrow.png')}
+          />
+        </TouchableOpacity>
       </LinearGradient>
-   
+
       <View style={styles.userContainer}>
 
         <Image
@@ -29,18 +31,18 @@ export default function ScreenA({ navigation }) {
 
         </Image>
         <Text style={styles.userText} >
-          Betong Jocke
-            </Text>
+          {user.firstName} {user.lastName}
+        </Text>
 
       </View>
-      <View style={styles.infoContainer}>  
-      <View style={styles.info}>
-      <Text>Role:</Text>  
-      
-          </View> 
+      <View style={styles.infoContainer}>
         <View style={styles.info}>
-      <Text>Email: betong.jocke@gmail.com</Text>
-        </View>       
+          <Text>Role:</Text>
+
+        </View>
+        <View style={styles.info}>
+          <Text>Email: betong.jocke@gmail.com</Text>
+        </View>
       </View>
 
       <Image style={styles.houseLogo}
@@ -85,30 +87,30 @@ const styles = StyleSheet.create({
   userText: {
     fontSize: 20
   },
-  infoContainer:{
+  infoContainer: {
     position: 'absolute',
     top: 440,
     left: 45,
   },
-  h2:{
+  h2: {
     fontSize: 25,
     fontWeight: "bold",
     margin: 10
   },
-  p:{
+  p: {
     fontSize: 15,
-    
+
   },
-  houseLogo:{
+  houseLogo: {
     position: 'absolute',
     top: 660
   },
-  arrow:{
+  arrow: {
     margin: 30,
     marginTop: 40,
   },
-  info:{
+  info: {
     margin: 10,
-    
+
   }
 });

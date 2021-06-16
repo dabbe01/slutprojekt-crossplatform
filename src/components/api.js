@@ -4,6 +4,7 @@ const HOST = '10.0.2.2'
 const API = axios.create({
     baseURL: `http://${HOST}:5000/api/v1`
 })
+
 module.exports = {
     login: async (email, password) => {
         try {
@@ -12,6 +13,30 @@ module.exports = {
             // Add error handling
         } catch (err) {
             throw new Error('Invalid credentials')
+        }
+    },
+
+    getUser: async (token) => {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+        try {
+            const response = await API.get('/me', config)
+            // console.log(response.data)
+            return response.data
+            // Add error handling
+        } catch (err) {
+            throw new Error('User not found')
+        }
+    },
+
+    getTasks: async () => {
+        try {
+            const response = await API.get('/tasks', { email: id })
+            if (response.status == 200) return response.data
+            // Add error handling
+        } catch (err) {
+            console.log(err)
         }
     },
 
