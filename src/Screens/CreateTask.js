@@ -10,9 +10,8 @@ export default function ScreenB({ navigation }) {
   const token = user.token
 
   const done = async () => {
-    console.log(token)
-    await API.createTask(name, token)
-    // navigation.navigate('Task')
+    await API.createTask(name, clientId, token)
+    navigation.navigate('Task')
   }
   const [clientId, setClientId] = useState()
   const [name, setName] = useState()
@@ -40,7 +39,7 @@ export default function ScreenB({ navigation }) {
           onChangeText={setClientId}
           value={clientId} />
 
-        <Text>{name}, {clientId}</Text>
+        {/* <Text>{name}, {clientId}</Text> */}
 
         <TouchableOpacity onPress={done}
           style={styles.doneContainer}>

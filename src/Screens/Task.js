@@ -1,7 +1,18 @@
-import React, { useState, } from 'react';
-import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, SafeAreaView } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { Pressable, StyleSheet, Text, View, Image, TouchableOpacity, Button, SafeAreaView, FlatList } from 'react-native';
+import { TaskContext } from '../store/TaskContext'
+import { AuthContext } from '../store/AuthContext'
 
 export default function ScreenA({ navigation }) {
+    const { task, getAllTasks } = useContext(TaskContext)
+    const { user } = useContext(AuthContext)
+    const token = user.token
+
+    useEffect(() => {
+        getAllTasks(token)
+    }, [])
+
+    // console.log(task)
 
     const onPressHandler = () => {
         navigation.navigate('CreateTask')
@@ -57,6 +68,15 @@ export default function ScreenA({ navigation }) {
 
     )
 
+    const Card = ({ task }) => {
+        return (
+            <TouchableOpacity style={styles.card}>
+                <Text style={styles.title}>{task.name}</Text>
+                <Text>{task.status}</Text>
+            </TouchableOpacity>
+        )
+    }
+
 
     return (
 
@@ -79,23 +99,15 @@ export default function ScreenA({ navigation }) {
                 <AppButton title="Skapa ett ärende" size="sm" backgroundColor="" />
             </View>
 
-            <Text style={styles.user}>
-                Dabstra
-            </Text>
-            <View style={styles.textContainer}>
-                <Text style={styles.text}>
-                    Philip ska bjuda Dabstra på öl 🍺
-                </Text>
-            </View>
-            <View style={styles.textContainer}>
+            <FlatList
+                keyExtractor={(item) => item._id}
+                data={task}
+                renderItem={({ item }) => (
+                    <Card task={item}>Test</Card>
+                )}
+            >
+            </FlatList>
 
-            </View>
-            <View style={styles.textContainer}>
-
-            </View>
-            <View style={styles.textContainer}>
-
-            </View>
             {showMeny && <View style={styles.meny}>
                 <View style={styles.triangle}>
                 </View>
@@ -116,6 +128,21 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         alignItems: 'center',
+
+    },
+    card: {
+        height: 190,
+        backgroundColor: "#fff",
+        elevation: 10,
+        width: 250,
+        marginRight: 20,
+        padding: 10,
+        marginVertical: 20,
+        borderRadius: 8,
+    },
+    title: {
+        fontSize: 14,
+        fontWeight: 'bold'
 
     },
     headerContainer: {

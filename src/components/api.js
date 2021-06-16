@@ -22,7 +22,6 @@ module.exports = {
         }
         try {
             const response = await API.get('/me', config)
-            // console.log(response.data)
             return response.data
             // Add error handling
         } catch (err) {
@@ -30,22 +29,25 @@ module.exports = {
         }
     },
 
-    getTasks: async () => {
+    getTasks: async (token) => {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
         try {
-            const response = await API.get('/tasks', { email: id })
-            if (response.status == 200) return response.data
+            const response = await API.get('/tasks', config)
+            return response.data
             // Add error handling
         } catch (err) {
             console.log(err)
         }
     },
 
-    createTask: async (name, token) => {
+    createTask: async (name, clientId, token) => {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         }
         try {
-            await API.post('/tasks', { name: name }, config)
+            await API.post('/tasks', { name: name, clientId: clientId }, config)
             return true
             // Add error handling
         } catch (err) {
