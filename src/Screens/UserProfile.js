@@ -37,11 +37,11 @@ export default function ScreenA({ navigation }) {
       </View>
       <View style={styles.infoContainer}>
         <View style={styles.info}>
-          <Text>Role:</Text>
+          <Text>Role: {user.role}</Text>
 
         </View>
         <View style={styles.info}>
-          <Text>Email: betong.jocke@gmail.com</Text>
+          <Text>Email: {user.email}</Text>
         </View>
       </View>
 

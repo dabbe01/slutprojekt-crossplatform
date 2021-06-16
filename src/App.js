@@ -5,6 +5,7 @@ import Login from './Screens/Login'
 import Task from './Screens/Task'
 import UserProfile from './Screens/UserProfile.js'
 import LandingPage from './Screens/LandingPage.js'
+import CreateTask from './Screens/CreateTask.js'
 import { TaskProvider, } from './store/TaskContext';
 import { AuthProvider, } from './store/AuthContext';
 
@@ -23,6 +24,7 @@ export default function App() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Task" component={Task} />
             <Stack.Screen name="UserProfile" component={UserProfile} />
+            <Stack.Screen name="CreateTask" component={CreateTask} />
           </Stack.Navigator>
         </NavigationContainer>
       </TaskProvider>

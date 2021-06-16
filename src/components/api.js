@@ -40,13 +40,17 @@ module.exports = {
         }
     },
 
-    createTask: async (email, password) => {
+    createTask: async (name, token) => {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        }
         try {
-            const response = await API.post('/authenticate', { email: email, password: password })
-            if (response.status == 200) return response.data
+            await API.post('/tasks', { name: name }, config)
+            return true
             // Add error handling
         } catch (err) {
             console.log(err)
+            throw new Error('Failed to create task')
         }
     }
 }

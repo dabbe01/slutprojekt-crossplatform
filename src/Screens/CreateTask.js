@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, SafeAreaView, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { AuthContext } from '../store/AuthContext'
+import API from '../components/api'
 
 export default function ScreenB({ navigation }) {
 
-  const done = () => {
-    navigation.navigate('Task')
-  }
+  const { user } = useContext(AuthContext)
+  const token = user.token
 
+  const done = async () => {
+    console.log(token)
+    await API.createTask(name, token)
+    // navigation.navigate('Task')
+  }
+  const [clientId, setClientId] = useState()
+  const [name, setName] = useState()
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
   return (
@@ -20,8 +28,19 @@ export default function ScreenB({ navigation }) {
         <Text style={styles.textTask}>Skriv din task här!</Text>
 
 
-        <TextInput style={styles.input} multiline placeholder="" />
+        <TextInput
+          style={styles.input}
+          placeholder="Task Name"
+          onChangeText={setName}
+          value={name} />
 
+        <TextInput
+          style={styles.input}
+          placeholder="Client ID"
+          onChangeText={setClientId}
+          value={clientId} />
+
+        <Text>{name}, {clientId}</Text>
 
         <TouchableOpacity onPress={done}
           style={styles.doneContainer}>
