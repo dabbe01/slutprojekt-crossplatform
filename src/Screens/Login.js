@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import API from '../components/api';
+import API from '../api';
 import LoginForm from '../components/Login/LoginForm'
 
 export default function ScreenB({ navigation }) {

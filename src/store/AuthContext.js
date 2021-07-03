@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react'
-import API from '../components/api'
+import API from '../api'
 
 export const AuthContext = createContext()
 
@@ -9,8 +9,8 @@ export const AuthProvider = props => {
     id: '',
     firstName: '',
     lastName: '',
-    email: 'admin@localhost.se',
-    password: 'password',
+    email: '',
+    password: '',
     token: '',
   })
 

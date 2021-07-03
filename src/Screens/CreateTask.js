@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, SafeAreaView, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AuthContext } from '../store/AuthContext'
-import API from '../components/api'
+import API from '../api'
 
 export default function ScreenB({ navigation }) {
 
