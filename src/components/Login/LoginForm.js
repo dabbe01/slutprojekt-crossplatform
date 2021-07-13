@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, TextInput, View, Text } from 'react-native';
 import BaseButton from '../BaseButton';
 import { AuthContext } from '../../store/AuthContext';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const LoginForm = (props) => {
 
@@ -11,7 +12,8 @@ const LoginForm = (props) => {
 
   const loginHandler = async (user) => {
     try {
-      await login(user.email, user.password)
+      const data = await login(user.email, user.password)
+      await AsyncStorage.setItem('token', data.token)
       props.navigation.navigate('Task')
       SetinvalidCredentials(false)
     } catch (err) {
@@ -19,6 +21,20 @@ const LoginForm = (props) => {
       console.log(err)
     }
   }
+
+
+
+  // const getData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('token')
+  //     if (value !== null) {
+  //       setToken('token')
+  //     }
+  //   } catch (e) {
+  //     // error reading value
+  //   }
+  // }
+
 
   return (
     <View style={styles.container} >

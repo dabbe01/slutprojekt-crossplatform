@@ -1,6 +1,5 @@
 import React, { useState, createContext } from 'react'
 import API from '../api'
-import * as SecureStore from 'expo-secure-store';
 
 export const AuthContext = createContext()
 
@@ -30,8 +29,12 @@ export const AuthProvider = props => {
     setUser({ ...user, password: password })
   }
 
+  const setToken = (token) => {
+    setUser({ ...user, token: token })
+  }
+
   return (
-    <AuthContext.Provider value={{ user, changeEmail, changePassword, login }} >
+    <AuthContext.Provider value={{ user, changeEmail, changePassword, setToken, login }} >
       {props.children}
     </AuthContext.Provider>
   )
