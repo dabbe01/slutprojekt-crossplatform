@@ -1,19 +1,25 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, TextInput, View, Text } from 'react-native';
 import BaseButton from '../BaseButton';
 import { AuthContext } from '../../store/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginForm = (props) => {
 
   const { user, changeEmail, changePassword, login } = useContext(AuthContext)
   const [invalidCredentials, SetinvalidCredentials] = useState(false);
 
-
   const loginHandler = async (user) => {
     try {
-      await login(user.email, user.password)
-      props.navigation.navigate('Task')
-      SetinvalidCredentials(false)
+      const data = await login(user.email, user.password)
+
+      if (data.token != null) {
+        await AsyncStorage.setItem('email', user.email)
+        await AsyncStorage.setItem('token', user.token)
+        props.navigation.navigate('Task')
+      } else {
+        SetinvalidCredentials(false)
+      }
     } catch (err) {
       SetinvalidCredentials(true)
       console.log(err)

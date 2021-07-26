@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { AuthContext, setToken } from '../store/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ScreenB({ navigation }) {
 
+  const { user, setToken } = useContext(AuthContext)
+
+  useEffect(() => {
+    load()
+  }, [])
+
+  const load = async () => {
+    try {
+      let email = await AsyncStorage.getItem('email')
+
+      if (email != null || email != undefined) {
+        await AsyncStorage.setItem('email', user.email)
+        setToken(await AsyncStorage.getItem('token'))
+        navigation.navigate('Task')
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const onSwipeHandler = () => {
     navigation.navigate('Login')
-
   }
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };

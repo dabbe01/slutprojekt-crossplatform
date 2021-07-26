@@ -19,7 +19,7 @@ export const AuthProvider = props => {
     const { email, token } = await API.login(username, pw)
     const { role, _id, firstName, lastName, password } = await API.getUser(token)
     setUser({ email, token, role, _id, firstName, lastName, password })
-    return true
+    return user
   }
 
   const changeEmail = (email) => {
@@ -30,8 +30,33 @@ export const AuthProvider = props => {
     setUser({ ...user, password: password })
   }
 
+  const setToken = (token) => {
+    setUser({ ...user, token: token })
+  }
+
+  const getValueForToken = async () => {
+    const res = await SecureStore.getItemAsync("token");
+    if (res) {
+      const validToken = await validateToken(res);
+      if (validToken) {
+        setUser({ ...user, token: res });
+      } else {
+        setUser({ ...user, token: null })
+      }
+    }
+  };
+
+  const validateToken = async (token) => {
+    try {
+      const res = await API.getUser(token);
+      return res;
+    } catch (err) {
+      return null;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, changeEmail, changePassword, login }} >
+    <AuthContext.Provider value={{ user, changeEmail, changePassword, login, getValueForToken, setToken }} >
       {props.children}
     </AuthContext.Provider>
   )
