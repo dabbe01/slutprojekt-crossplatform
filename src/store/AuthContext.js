@@ -1,6 +1,5 @@
 import React, { useState, createContext } from 'react'
 import API from '../api'
-import * as SecureStore from 'expo-secure-store';
 
 export const AuthContext = createContext()
 
