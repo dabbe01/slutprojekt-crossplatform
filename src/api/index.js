@@ -5,10 +5,16 @@ const API = axios.create({
     baseURL: `http://${HOST}:5000/api/v1`
 })
 
+const setAuthHeaders = token => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
+
 module.exports = {
     login: async (email, password) => {
         try {
             const response = await API.post('/authenticate', { email: email, password: password })
+            console.log(response.data.token)
+            setAuthHeaders(response.data.token)
             return response.data
             // Add error handling
         } catch (err) {
@@ -17,11 +23,13 @@ module.exports = {
     },
 
     getUser: async (token) => {
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        }
+        // const config = {
+        //     headers: { Authorization: `Bearer ${token}` }
+        // }
         try {
-            const response = await API.get('/me', config)
+            const response = await API.get('/me')
+            console.log(response.data)
+            // console.log(response)
             return response.data
             // Add error handling
         } catch (err) {
@@ -30,11 +38,11 @@ module.exports = {
     },
 
     getTasks: async (token) => {
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        }
+        // const config = {
+        //     headers: { Authorization: `Bearer ${token}` }
+        // }
         try {
-            const response = await API.get('/tasks', config)
+            const response = await API.get('/tasks')
             return response.data
             // Add error handling
         } catch (err) {
@@ -43,11 +51,11 @@ module.exports = {
     },
 
     createTask: async (name, clientId, token) => {
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        }
+        // const config = {
+        //     headers: { Authorization: `Bearer ${token}` }
+        // }
         try {
-            await API.post('/tasks', { name: name, clientId: clientId }, config)
+            await API.post('/tasks', { name: name, clientId: clientId })
             return true
             // Add error handling
         } catch (err) {
